@@ -3,9 +3,9 @@ const eventData = {
   eventTitle: "Qyz Uzatu",
   date: {
     ru: "02 июля 2026",
-    kz: "02 маусым 2026"
+    kz: "02 Шілде 2026"
   },
-  time: "18:00",
+  time: "16:00",
   venue: "Altyn Hall",
   address: {
     ru: "ул. Чокина, 98",
