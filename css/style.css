@@ -24,6 +24,9 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 html {
@@ -43,24 +46,6 @@ body {
   background-color: #fbf6ef;
 }
 
-button,
-a,
-.envelope,
-.invitation-card,
-.scene-portrait,
-.envelope-layer,
-.envelope-seal-img {
-  -webkit-tap-highlight-color: transparent;
-}
-
-.envelope,
-.invitation-card,
-.scene-portrait,
-.envelope-layer,
-.envelope-seal-img {
-  user-select: none;
-  -webkit-user-select: none;
-}
 
 
 img {
