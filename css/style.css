@@ -309,9 +309,9 @@ a {
 .tulips-backdrop {
   position: absolute;
   left: 50%;
-  top: 68%;
+  top: 75%;
   transform: translateX(-50%);
-  width: min(92vw, 520px);
+  width: min(92vw, 720px);
   height: 360px;
   background-image: url("../assets/img/tulips.jpg");
   background-size: cover;
