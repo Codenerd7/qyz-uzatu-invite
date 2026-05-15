@@ -1,4 +1,5 @@
-﻿:root {
+:root {
+  color-scheme: light only;
   --bg: #faf5ee;
   --bg-soft: #f4ede2;
   --card: rgba(255, 250, 243, 0.9);
@@ -27,6 +28,23 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+html,
+body {
+  color-scheme: light only;
+  background: #fbf6ef;
+}
+
+body,
+.page-shell,
+.hero-screen,
+.envelope-screen,
+.content-section,
+.arch-card,
+.info-card,
+.final-card {
+  background-color: #fbf6ef;
 }
 
 body {
@@ -320,8 +338,6 @@ a {
   opacity: 0;
   z-index: 1;
   pointer-events: none;
-  
-  
   transition: opacity 700ms ease;
 }
 
@@ -342,8 +358,8 @@ a {
   opacity: 0.32;
 }
 
-/* РћР±С‰РёР№ РєРѕРЅС‚РµР№РЅРµСЂ РєРѕРЅРІРµСЂС‚Р°.
-   Р’Р°Р¶РЅРѕ: РѕРЅ РќР• РёСЃС‡РµР·Р°РµС‚ С†РµР»РёРєРѕРј, РїРѕС‚РѕРјСѓ С‡С‚Рѕ РІРЅСѓС‚СЂРё РЅРµРіРѕ РєР°СЂС‚РѕС‡РєР° Рё С„РѕС‚Рѕ. */
+/* Общий контейнер конверта.
+   Важно: он НЕ исчезает целиком, потому что внутри него карточка и фото. */
 .envelope {
   position: relative;
   width: min(88vw, 520px);
@@ -404,7 +420,7 @@ a {
   z-index: 6;
 }
 
-/* РљР°СЂС‚РѕС‡РєР° Рё С„РѕС‚Рѕ С‚РµРїРµСЂСЊ РІРЅСѓС‚СЂРё РєРѕРЅРІРµСЂС‚Р° */
+/* Карточка и фото теперь внутри конверта */
 .preview-composition {
   position: absolute;
   inset: 0;
@@ -412,8 +428,8 @@ a {
   pointer-events: none;
 }
 
-/* РЎС‚Р°СЂС‚РѕРІРѕРµ СЃРѕСЃС‚РѕСЏРЅРёРµ: РєР°СЂС‚РѕС‡РєР° РЅР°С…РѕРґРёС‚СЃСЏ РІРЅСѓС‚СЂРё РєРѕРЅРІРµСЂС‚Р°,
-   Р·Р° РїРµСЂРµРґРЅРµР№ СЃС‚РµРЅРєРѕР№. РџРѕСЌС‚РѕРјСѓ СЃРЅР°С‡Р°Р»Р° РѕРЅР° РЅРµ РІРёРґРЅР° РєР°Рє РѕС‚РґРµР»СЊРЅР°СЏ РєР°СЂС‚РѕС‡РєР°. */
+/* Стартовое состояние: карточка находится внутри конверта,
+   за передней стенкой. Поэтому сначала она не видна как отдельная карточка. */
 .invitation-card {
   position: absolute;
   left: 43%;
@@ -465,7 +481,7 @@ a {
   color: rgba(24, 50, 82, 0.84);
 }
 
-/* Р¤РѕС‚Рѕ С‚РѕР¶Рµ СЃС‚Р°СЂС‚СѓРµС‚ РІРЅСѓС‚СЂРё РєРѕРЅРІРµСЂС‚Р°, РЅРѕ РїСЂР°РІРµРµ Рё СЃ РЅР°РєР»РѕРЅРѕРј */
+/* Фото тоже стартует внутри конверта, но правее и с наклоном */
 .scene-portrait {
   position: absolute;
   left: 67%;
@@ -513,14 +529,13 @@ a {
   transform: scale(0.92);
 }
 
-/* РљР»Р°РїР°РЅ РѕС‚РєСЂС‹РІР°РµС‚СЃСЏ РЅР°Р·Р°Рґ */
-
+/* Клапан открывается назад */
 .envelope.is-open .envelope-flap-img {
   z-index: 1;
   transform: scaleY(1);
 }
 
-/* РџРµСЂРІС‹Р№ СЌС‚Р°Рї: РєР°СЂС‚РѕС‡РєР° Рё С„РѕС‚Рѕ РІС‹С…РѕРґСЏС‚ РёР· РєРѕРЅРІРµСЂС‚Р° */
+/* Первый этап: карточка и фото выходят из конверта */
 .envelope.is-open .invitation-card {
   opacity: 1;
   transform: translate(-50%, -70px) rotate(-3deg) scale(0.82);
@@ -531,8 +546,8 @@ a {
   transform: translate(-50%, -70px) rotate(9deg) scale(0.78);
 }
 
-/* Р’С‚РѕСЂРѕР№ СЌС‚Р°Рї: С‡Р°СЃС‚Рё РєРѕРЅРІРµСЂС‚Р° СѓС…РѕРґСЏС‚ РІРЅРёР· Рё РёСЃС‡РµР·Р°СЋС‚.
-   Р’Р°Р¶РЅРѕ: РќР• СЃРєСЂС‹РІР°РµРј .envelope С†РµР»РёРєРѕРј, РёРЅР°С‡Рµ РёСЃС‡РµР·РЅСѓС‚ РєР°СЂС‚РѕС‡РєР° Рё С„РѕС‚Рѕ. */
+/* Второй этап: части конверта уходят вниз и исчезают.
+   Важно: НЕ скрываем .envelope целиком, иначе исчезнут карточка и фото. */
 .envelope-stage.is-settled .envelope-back-img,
 .envelope-stage.is-settled .envelope-front-img,
 .envelope-stage.is-settled .envelope-flap-img,
@@ -551,7 +566,7 @@ a {
   transform: translateY(120px) scale(0.94);
 }
 
-/* Р¤РёРЅР°Р»СЊРЅР°СЏ РєРѕРјРїРѕР·РёС†РёСЏ С€РёСЂРµ РєРѕРЅРІРµСЂС‚Р° */
+/* Финальная композиция шире конверта */
 .envelope-stage.is-settled .invitation-card {
   left: 42%;
   top: 16%;
@@ -570,7 +585,7 @@ a {
   box-shadow: 0 30px 64px rgba(24, 50, 82, 0.16);
 }
 
-/* Р§С‚РѕР±С‹ СЃРєСЂРѕР»Р» РЅРµ Р±Р»РѕРєРёСЂРѕРІР°Р»СЃСЏ */
+/* Чтобы скролл не блокировался */
 .envelope-stage.is-settled .preview-composition,
 .envelope-stage.is-settled .invitation-card,
 .envelope-stage.is-settled .scene-portrait {
@@ -964,7 +979,6 @@ a {
     top: 90%;
     width: min(94vw, 360px);
     height: 300px;
-    
   }
 
   .envelope-stage.is-settled + .tulips-backdrop {
