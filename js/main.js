@@ -5,7 +5,7 @@ const eventData = {
     ru: "02 июля 2026",
     kz: "02 Шілде 2026"
   },
-  time: "16:00",
+  time: "17:00",
   venue: "Altyn Hall",
   address: {
     ru: "ул. Чокина, 98",
