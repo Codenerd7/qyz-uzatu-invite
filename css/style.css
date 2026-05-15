@@ -564,7 +564,7 @@ a {
 
 .envelope-stage.is-settled .scene-portrait {
   left: 62%;
-  top: 30%;
+  top: 60%;
   z-index: 5;
   transform: translate(-50%, 0) rotate(11deg) scale(1.28);
   box-shadow: 0 30px 64px rgba(24, 50, 82, 0.16);
