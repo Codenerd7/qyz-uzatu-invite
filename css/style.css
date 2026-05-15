@@ -1,4 +1,5 @@
 ﻿:root {
+  color-scheme: light only;
   --bg: #faf5ee;
   --bg-soft: #f4ede2;
   --card: rgba(255, 250, 243, 0.9);
@@ -38,7 +39,11 @@ body {
     radial-gradient(circle at top left, rgba(201, 220, 235, 0.4), transparent 28%),
     radial-gradient(circle at bottom right, rgba(180, 138, 77, 0.12), transparent 26%),
     linear-gradient(180deg, #fdfaf6 0%, #f7efe3 100%);
+  color-scheme: light only;
+  background-color: #fbf6ef;
 }
+
+
 
 img {
   max-width: 100%;
