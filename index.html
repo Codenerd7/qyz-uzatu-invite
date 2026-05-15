@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Интерактивное приглашение на Қыз Ұзату">
+  <title>Qyz Uzatu Invitation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/img/bride.jpeg" as="image" type="image/jpeg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero-screen screen active" id="language-screen" aria-labelledby="hero-name">
+      <div class="ornament ornament-top" aria-hidden="true"></div>
+      <div class="hero-inner hero-romantic fade-sequence">
+        <p class="eyebrow" data-bind="eventTitle"></p>
+        <h1 class="hero-name" id="hero-name" data-bind="brideName"></h1>
+        <p class="hero-subtitle" data-i18n="choosePrompt"></p>
+        <div class="lang-actions" role="group" aria-label="Language selection">
+          <button class="lang-btn" type="button" data-lang="kz">Қазақ тілі</button>
+          <button class="lang-btn" type="button" data-lang="ru">Русский язык</button>
+        </div>
+      </div>
+      <div class="ornament ornament-bottom" aria-hidden="true"></div>
+    </header>
+
+    <main id="invitation-flow" class="hidden" aria-live="polite">
+      <section class="screen envelope-screen" id="envelope-screen" aria-labelledby="envelope-title">
+        <div class="section-wrap">
+          <p class="section-kicker" data-bind="eventTitle"></p>
+          <h2 class="section-title" id="envelope-title" data-bind="brideName"></h2>
+
+          <div class="envelope-stage" id="envelopeStage">
+            <div
+              class="envelope"
+              id="envelopeButton"
+              role="button"
+              tabindex="0"
+              aria-expanded="false"
+              aria-controls="previewComposition"
+            >
+              <!-- 1. Задняя стенка конверта -->
+              <img
+                class="envelope-layer envelope-back-img"
+                src="assets/img/envelope/envelope-back.png"
+                alt=""
+                aria-hidden="true"
+              >
+
+              <div class="preview-composition" id="previewComposition" aria-live="polite">
+                <article class="invitation-card" id="invitationCard" aria-hidden="true">
+                  <span class="card-chip" data-bind="eventTitle"></span>
+                  <strong class="card-date" data-bind="date"></strong>
+                  <span class="card-time" data-bind="time"></span>
+                  <span class="card-venue" data-bind="venue"></span>
+                </article>
+
+                <figure class="scene-portrait" id="scenePortrait" aria-hidden="true">
+                  <div class="scene-portrait-frame">
+                    <img src="assets/img/bride.jpeg" alt="Фото невесты" width="720" height="900" loading="eager">
+                  </div>
+                </figure>
+              </div>
+
+              <!-- 3. Передняя часть конверта, закрывает низ карточки и фото -->
+              <img
+                class="envelope-layer envelope-front-img"
+                src="assets/img/envelope/envelope-front.png"
+                alt=""
+                aria-hidden="true"
+              >
+
+              <!-- 4. Клапан.
+                   Файл envelope-flap.png уже открыт остриём вверх.
+                   В CSS мы повернём его на 180deg для закрытого состояния. -->
+              <img
+                class="envelope-layer envelope-flap-img"
+                src="assets/img/envelope/envelope-flap.png"
+                alt=""
+                aria-hidden="true"
+              >
+
+              <!-- 5. Печать всегда сверху -->
+              <img
+                class="envelope-seal-img"
+                src="assets/img/envelope/seal.png"
+                alt=""
+                aria-hidden="true"
+              >
+            </div>
+          </div>
+          <div class="tulips-backdrop" aria-hidden="true"></div>
+
+          <p class="hint-text" data-i18n="openHint"></p>
+        </div>
+      </section>
+
+      <section class="content-section reveal-on-scroll">
+        <div class="arch-card">
+          <p class="section-kicker" data-bind="eventTitle"></p>
+          <h2 class="section-title" data-bind="brideName"></h2>
+          <div class="invitation-copy">
+            <p class="greeting-text" id="greetingText"></p>
+            <p data-i18n="inviteLine1"></p>
+            <p data-i18n="inviteLine2"></p>
+            <p data-i18n="inviteLine3"></p>
+          </div>
+
+          <div class="highlight-box">
+            <div>
+              <span class="mini-label" data-i18n="dateLabel"></span>
+              <strong data-bind="date"></strong>
+            </div>
+            <div>
+              <span class="mini-label" data-i18n="timeLabel"></span>
+              <strong data-bind="time"></strong>
+            </div>
+          </div>
+
+          <div class="calendar-card" aria-label="Event date calendar">
+            <div class="calendar-head">
+              <span data-i18n="calendarMonth"></span>
+              <strong data-bind="calendarYear"></strong>
+            </div>
+            <div class="calendar-weekdays">
+              <span data-i18n="weekdayMon"></span>
+              <span data-i18n="weekdayTue"></span>
+              <span data-i18n="weekdayWed"></span>
+              <span data-i18n="weekdayThu"></span>
+              <span data-i18n="weekdayFri"></span>
+              <span data-i18n="weekdaySat"></span>
+              <span data-i18n="weekdaySun"></span>
+            </div>
+            <div class="calendar-grid" id="calendarGrid"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section reveal-on-scroll">
+        <div class="info-card">
+          <h3 data-i18n="addressTitle"></h3>
+          <p class="venue-name" data-bind="venue"></p>
+          <p class="address-text"><span data-i18n="addressLabel"></span> <span data-bind="address"></span></p>
+          <p class="address-city" data-bind="city"></p>
+          <a class="primary-btn" id="mapButtonBottom" target="_blank" rel="noopener noreferrer" href="#">
+            <span data-i18n="openMapButton"></span>
+          </a>
+        </div>
+      </section>
+
+      <section class="content-section reveal-on-scroll">
+        <div class="info-card split-card">
+          <article>
+            <h3 data-i18n="dressCodeTitle"></h3>
+            <p id="dressCodeText"></p>
+          </article>
+          <article>
+            <h3 data-i18n="formatTitle"></h3>
+            <p id="formatText"></p>
+          </article>
+        </div>
+      </section>
+
+      <section class="content-section reveal-on-scroll">
+        <div class="final-card">
+          <h3 data-i18n="finalLine"></h3>
+          <p class="parents-line" data-bind="parentsNames"></p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
