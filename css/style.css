@@ -512,8 +512,9 @@ a {
 }
 
 .hint-text {
-  margin: 0;
+  margin: -18px 0 0;
   font-size: 0.95rem;
+  line-height: 1.4;
   transition: opacity 320ms ease, transform 320ms ease;
 }
 
@@ -1087,6 +1088,10 @@ a {
     top: 75%;
     z-index: 5;
     transform: translate(-50%, 0) rotate(12deg) scale(1.4);
+  }
+
+  .hint-text {
+    margin-top: -12px;
   }
 
   .invite-footer {
