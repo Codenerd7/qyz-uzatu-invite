@@ -99,6 +99,7 @@ const state = {
 };
 
 let envelopeFloatTimer = 0;
+let envelopeSettleTimer = 0;
 
 const elements = {
   html: document.documentElement,
@@ -203,23 +204,31 @@ function revealInvitationFlow() {
   }
 
   window.clearTimeout(envelopeFloatTimer);
-  elements.envelopeButton.classList.remove("is-floating", "is-opening", "is-open");
+  window.clearTimeout(envelopeSettleTimer);
+  elements.envelopeStage?.classList.remove("is-opening", "is-open", "is-settled");
+  elements.envelopeButton.classList.remove("is-entering", "is-floating", "is-opening", "is-open");
   elements.envelopeButton.style.pointerEvents = "";
   elements.envelopeButton.style.touchAction = "";
+  elements.envelopeButton.setAttribute("aria-expanded", "false");
 
   if (state.reducedMotion) {
     return;
   }
 
-  elements.envelopeButton.classList.add("is-entering");
-  envelopeFloatTimer = window.setTimeout(() => {
-    if (state.hasOpenedEnvelope) {
-      return;
-    }
+  window.requestAnimationFrame(() => {
+    // Restart the animation after the screen switches from display:none.
+    void elements.envelopeButton.offsetWidth;
+    elements.envelopeButton.classList.add("is-entering");
 
-    elements.envelopeButton.classList.remove("is-entering");
-    elements.envelopeButton.classList.add("is-floating");
-  }, 900);
+    envelopeFloatTimer = window.setTimeout(() => {
+      if (state.hasOpenedEnvelope) {
+        return;
+      }
+
+      elements.envelopeButton.classList.remove("is-entering");
+      elements.envelopeButton.classList.add("is-floating");
+    }, 900);
+  });
 }
 
 function openEnvelope() {
@@ -230,10 +239,8 @@ function openEnvelope() {
   state.hasOpenedEnvelope = true;
 
   window.clearTimeout(envelopeFloatTimer);
+  window.clearTimeout(envelopeSettleTimer);
   elements.envelopeButton.classList.remove("is-entering", "is-floating");
-
-  elements.envelopeButton.classList.add("is-opening");
-  elements.envelopeStage?.classList.add("is-opening");
 
   // Release touch/click capture immediately so the page can scroll
   // while the envelope animation continues.
@@ -243,18 +250,24 @@ function openEnvelope() {
   elements.invitationCard?.setAttribute("aria-hidden", "false");
   elements.scenePortrait?.setAttribute("aria-hidden", "false");
 
-  window.setTimeout(() => {
+  // Flush layout before toggling animation classes so WebKit starts
+  // the opening transition reliably.
+  void elements.envelopeButton.offsetWidth;
+  elements.envelopeButton.classList.add("is-opening");
+  elements.envelopeStage?.classList.add("is-opening");
+
+  window.requestAnimationFrame(() => {
     elements.envelopeButton.classList.add("is-open");
     elements.envelopeStage?.classList.add("is-open");
     elements.envelopeButton.setAttribute("aria-expanded", "true");
-  }, state.reducedMotion ? 0 : 180);
+  });
 
   /*
     Даём гостю увидеть открытый конверт:
     flap открылся, карточка и фото торчат из front.
     Только после паузы убираем PNG-слои конверта.
   */
-  window.setTimeout(() => {
+  envelopeSettleTimer = window.setTimeout(() => {
     elements.envelopeStage?.classList.add("is-settled");
   }, state.reducedMotion ? 0 : 2800);
 }
@@ -283,10 +296,24 @@ function setupScrollReveal() {
 function setupEvents() {
   elements.langButtons.forEach((button) => {
     button.addEventListener("click", () => {
+      state.hasOpenedEnvelope = false;
       applyLanguage(button.dataset.lang);
       revealInvitationFlow();
     });
   });
+
+  if (window.PointerEvent) {
+    elements.envelopeButton.addEventListener("pointerup", (event) => {
+      if (event.pointerType !== "mouse") {
+        openEnvelope();
+      }
+    });
+  } else {
+    elements.envelopeButton.addEventListener("touchend", (event) => {
+      event.preventDefault();
+      openEnvelope();
+    }, { passive: false });
+  }
 
   elements.envelopeButton.addEventListener("click", openEnvelope);
 
