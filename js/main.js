@@ -204,6 +204,8 @@ function revealInvitationFlow() {
 
   window.clearTimeout(envelopeFloatTimer);
   elements.envelopeButton.classList.remove("is-floating", "is-opening", "is-open");
+  elements.envelopeButton.style.pointerEvents = "";
+  elements.envelopeButton.style.touchAction = "";
 
   if (state.reducedMotion) {
     return;
@@ -232,6 +234,11 @@ function openEnvelope() {
 
   elements.envelopeButton.classList.add("is-opening");
   elements.envelopeStage?.classList.add("is-opening");
+
+  // Release touch/click capture immediately so the page can scroll
+  // while the envelope animation continues.
+  elements.envelopeButton.style.pointerEvents = "none";
+  elements.envelopeButton.style.touchAction = "pan-y";
 
   elements.invitationCard?.setAttribute("aria-hidden", "false");
   elements.scenePortrait?.setAttribute("aria-hidden", "false");
