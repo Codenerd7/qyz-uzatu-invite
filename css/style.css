@@ -592,9 +592,10 @@ a {
 /* РљР»Р°РїР°РЅ РѕС‚РєСЂС‹РІР°РµС‚СЃСЏ РЅР°Р·Р°Рґ */
 
 .envelope.is-open .envelope-flap-img {
+  z-index: 1;
   -webkit-transform: scaleY(1) translateZ(0);
   -ms-transform: scaleY(1);
-  transform: scaleY(1) translateZ(0);
+  transform: scaleY(1);
 }
 
 /* РџРµСЂРІС‹Р№ СЌС‚Р°Рї: РєР°СЂС‚РѕС‡РєР° Рё С„РѕС‚Рѕ РІС‹С…РѕРґСЏС‚ РёР· РєРѕРЅРІРµСЂС‚Р° */
@@ -611,6 +612,8 @@ a {
   -ms-transform: translate(-50%, -70px) rotate(9deg) scale(0.78);
   transform: translate(-50%, -70px) rotate(9deg) scale(0.78) translateZ(0);
 }
+
+
 
 /* Р’С‚РѕСЂРѕР№ СЌС‚Р°Рї: С‡Р°СЃС‚Рё РєРѕРЅРІРµСЂС‚Р° СѓС…РѕРґСЏС‚ РІРЅРёР· Рё РёСЃС‡РµР·Р°СЋС‚.
    Р’Р°Р¶РЅРѕ: РќР• СЃРєСЂС‹РІР°РµРј .envelope С†РµР»РёРєРѕРј, РёРЅР°С‡Рµ РёСЃС‡РµР·РЅСѓС‚ РєР°СЂС‚РѕС‡РєР° Рё С„РѕС‚Рѕ. */
@@ -629,6 +632,15 @@ a {
   transform: scaleY(1) translateY(-8%) scale(0.94) translateZ(0);
 }
 
+.envelope-stage.is-settled .envelope-back-img {
+  z-index: 0;
+}
+
+.envelope-stage.is-settled .envelope-front-img,
+.envelope-stage.is-settled .envelope-seal-img {
+  z-index: 1;
+}
+
 .envelope-stage.is-settled .envelope-back-img,
 .envelope-stage.is-settled .envelope-front-img,
 .envelope-stage.is-settled .envelope-seal-img {
@@ -641,7 +653,7 @@ a {
 .envelope-stage.is-settled .invitation-card {
   left: 42%;
   top: 16%;
-  z-index: 3;
+  z-index: 4;
   -webkit-transform: translate(-50%, 0) rotate(-6deg) scale(1.16) translateZ(0);
   -ms-transform: translate(-50%, 0) rotate(-6deg) scale(1.16);
   transform: translate(-50%, 0) rotate(-6deg) scale(1.16) translateZ(0);
@@ -666,6 +678,8 @@ a {
 .envelope-stage.is-settled .scene-portrait {
   pointer-events: none;
 }
+
+
 
 .envelope-stage.is-open ~ .hint-text,
 .envelope-stage.is-settled ~ .hint-text {
@@ -1224,9 +1238,10 @@ a {
   }
 
   .envelope.is-open .envelope-flap-img {
+    z-index: 1;
     -webkit-transform: scaleY(1) translateZ(0);
     -ms-transform: scaleY(1);
-    transform: scaleY(1) translateZ(0);
+    transform: scaleY(1);
   }
 
   .envelope.is-open .invitation-card {
@@ -1246,7 +1261,7 @@ a {
   .envelope-stage.is-settled .invitation-card {
     left: 42%;
     top: 16%;
-    z-index: 3;
+    z-index: 4;
     -webkit-transform: translate(-50%, 0) rotate(-7deg) scale(1.08) translateZ(0);
     -ms-transform: translate(-50%, 0) rotate(-7deg) scale(1.08);
     transform: translate(-50%, 0) rotate(-7deg) scale(1.08) translateZ(0);
