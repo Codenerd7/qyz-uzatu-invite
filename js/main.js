@@ -211,10 +211,6 @@ function revealInvitationFlow() {
   elements.envelopeButton.style.touchAction = "";
   elements.envelopeButton.setAttribute("aria-expanded", "false");
 
-  if (state.reducedMotion) {
-    return;
-  }
-
   window.requestAnimationFrame(() => {
     // Restart the animation after the screen switches from display:none.
     void elements.envelopeButton.offsetWidth;
@@ -269,7 +265,7 @@ function openEnvelope() {
   */
   envelopeSettleTimer = window.setTimeout(() => {
     elements.envelopeStage?.classList.add("is-settled");
-  }, state.reducedMotion ? 0 : 2800);
+  }, 2800);
 }
 
 function setupScrollReveal() {

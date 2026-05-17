@@ -430,7 +430,7 @@ a {
   transform-origin: 50% 41%;
   -webkit-transform: scaleY(-1) translateZ(0);
   -ms-transform: scaleY(-1);
-  transform: scaleY(-1);
+  transform: scaleY(-1) translateZ(0);
 }
 
 .envelope-front-img {
@@ -592,10 +592,9 @@ a {
 /* РљР»Р°РїР°РЅ РѕС‚РєСЂС‹РІР°РµС‚СЃСЏ РЅР°Р·Р°Рґ */
 
 .envelope.is-open .envelope-flap-img {
-  z-index: 1;
   -webkit-transform: scaleY(1) translateZ(0);
   -ms-transform: scaleY(1);
-  transform: scaleY(1);
+  transform: scaleY(1) translateZ(0);
 }
 
 /* РџРµСЂРІС‹Р№ СЌС‚Р°Рї: РєР°СЂС‚РѕС‡РєР° Рё С„РѕС‚Рѕ РІС‹С…РѕРґСЏС‚ РёР· РєРѕРЅРІРµСЂС‚Р° */
@@ -603,14 +602,14 @@ a {
   opacity: 1;
   -webkit-transform: translate(-50%, -70px) rotate(-3deg) scale(0.82) translateZ(0);
   -ms-transform: translate(-50%, -70px) rotate(-3deg) scale(0.82);
-  transform: translate(-50%, -70px) rotate(-3deg) scale(0.82);
+  transform: translate(-50%, -70px) rotate(-3deg) scale(0.82) translateZ(0);
 }
 
 .envelope.is-open .scene-portrait {
   opacity: 1;
   -webkit-transform: translate(-50%, -70px) rotate(9deg) scale(0.78) translateZ(0);
   -ms-transform: translate(-50%, -70px) rotate(9deg) scale(0.78);
-  transform: translate(-50%, -70px) rotate(9deg) scale(0.78);
+  transform: translate(-50%, -70px) rotate(9deg) scale(0.78) translateZ(0);
 }
 
 /* Р’С‚РѕСЂРѕР№ СЌС‚Р°Рї: С‡Р°СЃС‚Рё РєРѕРЅРІРµСЂС‚Р° СѓС…РѕРґСЏС‚ РІРЅРёР· Рё РёСЃС‡РµР·Р°СЋС‚.
@@ -624,9 +623,10 @@ a {
 }
 
 .envelope-stage.is-settled .envelope-flap-img {
+  z-index: 1;
   -webkit-transform: scaleY(1) translateY(-8%) scale(0.94) translateZ(0);
   -ms-transform: scaleY(1) translateY(-8%) scale(0.94);
-  transform: scaleY(1) translateY(-8%) scale(0.94);
+  transform: scaleY(1) translateY(-8%) scale(0.94) translateZ(0);
 }
 
 .envelope-stage.is-settled .envelope-back-img,
@@ -634,7 +634,7 @@ a {
 .envelope-stage.is-settled .envelope-seal-img {
   -webkit-transform: translateY(120px) scale(0.94) translateZ(0);
   -ms-transform: translateY(120px) scale(0.94);
-  transform: translateY(120px) scale(0.94);
+  transform: translateY(120px) scale(0.94) translateZ(0);
 }
 
 /* Р¤РёРЅР°Р»СЊРЅР°СЏ РєРѕРјРїРѕР·РёС†РёСЏ С€РёСЂРµ РєРѕРЅРІРµСЂС‚Р° */
@@ -644,7 +644,7 @@ a {
   z-index: 3;
   -webkit-transform: translate(-50%, 0) rotate(-6deg) scale(1.16) translateZ(0);
   -ms-transform: translate(-50%, 0) rotate(-6deg) scale(1.16);
-  transform: translate(-50%, 0) rotate(-6deg) scale(1.16);
+  transform: translate(-50%, 0) rotate(-6deg) scale(1.16) translateZ(0);
   box-shadow:
     0 34px 70px rgba(24, 50, 82, 0.16),
     0 1px 0 rgba(255, 255, 255, 0.84) inset;
@@ -656,7 +656,7 @@ a {
   z-index: 5;
   -webkit-transform: translate(-50%, 0) rotate(11deg) scale(1.28) translateZ(0);
   -ms-transform: translate(-50%, 0) rotate(11deg) scale(1.28);
-  transform: translate(-50%, 0) rotate(11deg) scale(1.28);
+  transform: translate(-50%, 0) rotate(11deg) scale(1.28) translateZ(0);
   box-shadow: 0 30px 64px rgba(24, 50, 82, 0.16);
 }
 
@@ -1224,24 +1224,23 @@ a {
   }
 
   .envelope.is-open .envelope-flap-img {
-    z-index: 1;
     -webkit-transform: scaleY(1) translateZ(0);
     -ms-transform: scaleY(1);
-    transform: scaleY(1);
+    transform: scaleY(1) translateZ(0);
   }
 
   .envelope.is-open .invitation-card {
     opacity: 1;
     -webkit-transform: translate(-50%, -76px) rotate(-3deg) scale(0.78) translateZ(0);
     -ms-transform: translate(-50%, -76px) rotate(-3deg) scale(0.78);
-    transform: translate(-50%, -76px) rotate(-3deg) scale(0.78);
+    transform: translate(-50%, -76px) rotate(-3deg) scale(0.78) translateZ(0);
   }
 
   .envelope.is-open .scene-portrait {
     opacity: 1;
     -webkit-transform: translate(-50%, -68px) rotate(9deg) scale(0.74) translateZ(0);
     -ms-transform: translate(-50%, -68px) rotate(9deg) scale(0.74);
-    transform: translate(-50%, -68px) rotate(9deg) scale(0.74);
+    transform: translate(-50%, -68px) rotate(9deg) scale(0.74) translateZ(0);
   }
 
   .envelope-stage.is-settled .invitation-card {
@@ -1250,7 +1249,7 @@ a {
     z-index: 3;
     -webkit-transform: translate(-50%, 0) rotate(-7deg) scale(1.08) translateZ(0);
     -ms-transform: translate(-50%, 0) rotate(-7deg) scale(1.08);
-    transform: translate(-50%, 0) rotate(-7deg) scale(1.08);
+    transform: translate(-50%, 0) rotate(-7deg) scale(1.08) translateZ(0);
   }
 
   .envelope-stage.is-settled .scene-portrait {
@@ -1259,7 +1258,7 @@ a {
     z-index: 5;
     -webkit-transform: translate(-50%, 0) rotate(12deg) scale(1.4) translateZ(0);
     -ms-transform: translate(-50%, 0) rotate(12deg) scale(1.4);
-    transform: translate(-50%, 0) rotate(12deg) scale(1.4);
+    transform: translate(-50%, 0) rotate(12deg) scale(1.4) translateZ(0);
   }
 
   .hint-text {
@@ -1280,17 +1279,14 @@ a {
     scroll-behavior: auto;
   }
 
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-
-  .reveal-on-scroll,
-  .fade-sequence > * {
+  .fade-sequence > *,
+  .reveal-on-scroll {
     opacity: 1 !important;
     transform: none !important;
+    -webkit-animation: none !important;
+    animation: none !important;
+    -webkit-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
   }
 }
